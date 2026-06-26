@@ -18,10 +18,9 @@ npm run preview
 
 ## Deployment
 
-The repo includes both `vercel.json` and `netlify.toml`.
+The portfolio is configured for Vercel through `vercel.json`.
 
 - Vercel: import the project and keep the detected Vite settings, or run `vercel --prod`.
-- Netlify: import the project with build command `npm run build` and publish directory `dist`.
 
 Current production deployment:
 
