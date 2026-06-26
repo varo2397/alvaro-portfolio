@@ -22,3 +22,17 @@ The repo includes both `vercel.json` and `netlify.toml`.
 
 - Vercel: import the project and keep the detected Vite settings, or run `vercel --prod`.
 - Netlify: import the project with build command `npm run build` and publish directory `dist`.
+
+Current production deployment:
+
+- Vercel: https://alvaro-portfolio-ten.vercel.app
+
+Custom domain candidates checked through Vercel on June 26, 2026:
+
+- `alvaro-castro.dev`: available, $9.99 purchase, $13 renewal.
+- `alvarocastro.dev`: available, $9.99 purchase, $13 renewal.
+- `alvaro-castro.io`: available, $37.99 purchase, $46 renewal.
+
+Vercel created the project and deployed successfully, but automatic GitHub repository connection
+failed during CLI deploy. If continuous Vercel deployments are desired, grant the Vercel GitHub app
+access to `varo2397/alvaro-portfolio` in GitHub and reconnect the project from the Vercel dashboard.
