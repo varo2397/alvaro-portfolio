@@ -36,21 +36,15 @@ Domain details:
 
 ## Automatic Deployments
 
-Vercel CLI deployment works, but the CLI Git connection failed because the Vercel GitHub app needs
-access to `varo2397/alvaro-portfolio`.
+Vercel is connected to `varo2397/alvaro-portfolio`.
 
-To enable automatic deploys on every push:
+Deployment behavior:
 
-1. Open GitHub: `Settings` -> `Applications` -> `Installed GitHub Apps` -> `Vercel` -> `Configure`.
-2. Grant Vercel access to `varo2397/alvaro-portfolio`.
-3. Open the Vercel dashboard project: `alvaro-portfolio`.
-4. Go to `Settings` -> `Git` -> `Connect Git Repository`.
-5. Select `varo2397/alvaro-portfolio`.
-6. Keep these settings:
-   - Framework Preset: `Vite`
-   - Root Directory: `.`
-   - Install Command: default
-   - Build Command: `npm run build`
-   - Output Directory: `dist`
+- Pushes to `main` deploy to production.
+- Pull requests get preview deployments.
+- Framework Preset: `Vite`
+- Root Directory: `.`
+- Build Command: `npm run build`
+- Output Directory: `dist`
 
-After this, pushes to `main` deploy to production, and pull requests get preview deployments.
+If a deployment needs to be forced manually, run `vercel --prod`.
