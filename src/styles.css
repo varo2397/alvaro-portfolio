@@ -228,6 +228,24 @@ h1 span {
   margin-top: 30px;
 }
 
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 22px;
+  max-width: 700px;
+}
+
+.hero-tags span {
+  background: rgba(255, 250, 240, 0.72);
+  border: 1px solid rgba(23, 27, 26, 0.22);
+  border-radius: 999px;
+  color: #2d3431;
+  font-size: 0.76rem;
+  font-weight: 900;
+  padding: 8px 10px;
+}
+
 .button {
   align-items: center;
   border: 2px solid var(--ink);
@@ -373,7 +391,7 @@ h1 span {
   color: white;
   display: grid;
   gap: 3px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .metrics div {
@@ -427,6 +445,66 @@ h1 span {
   display: grid;
   gap: 46px;
   grid-template-columns: minmax(260px, 0.86fr) 1.14fr;
+}
+
+.credential-strip {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+  max-width: 1240px;
+  padding: 0 24px 98px;
+}
+
+.credential-strip article {
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 6px;
+  color: #ffffff;
+  min-height: 176px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.credential-strip article::after {
+  background: var(--yellow);
+  bottom: 0;
+  content: "";
+  height: 10px;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.credential-strip article:nth-child(2)::after {
+  background: var(--red);
+}
+
+.credential-strip article:nth-child(3)::after {
+  background: var(--mint);
+}
+
+.credential-strip span {
+  color: var(--yellow);
+  display: block;
+  font-size: 0.76rem;
+  font-weight: 950;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.credential-strip strong {
+  display: block;
+  font-size: 1.18rem;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.credential-strip p {
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.58;
+  margin: 0;
 }
 
 h2 {
@@ -528,6 +606,32 @@ h2 {
 .timeline-item span {
   color: var(--muted);
   line-height: 1.6;
+}
+
+.role-highlights {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 18px 0 0;
+  padding: 0;
+}
+
+.role-highlights li {
+  color: #3f4642;
+  line-height: 1.55;
+  padding-left: 18px;
+  position: relative;
+}
+
+.role-highlights li::before {
+  background: var(--red);
+  border: 1px solid var(--ink);
+  content: "";
+  height: 8px;
+  left: 0;
+  position: absolute;
+  top: 0.55em;
+  width: 8px;
 }
 
 .project-card {
@@ -860,11 +964,16 @@ h2 {
 
   .hero-inner,
   .intro,
+  .credential-strip,
   .section-heading.split,
   .skills-grid,
   .project-grid,
   .contact {
     grid-template-columns: 1fr;
+  }
+
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .hero-inner {
@@ -881,8 +990,13 @@ h2 {
   }
 
   .section,
-  .contact {
+  .contact,
+  .credential-strip {
     padding: 76px 20px;
+  }
+
+  .credential-strip {
+    padding-top: 0;
   }
 }
 

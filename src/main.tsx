@@ -31,6 +31,7 @@ type Role = {
   title: string;
   period: string;
   summary: string;
+  highlights: string[];
 };
 
 const projects: Project[] = [
@@ -84,38 +85,71 @@ const roles: Role[] = [
     title: "Senior Software Engineer",
     period: "Apr 2022 - Present",
     summary:
-      "Delivered scalable full-stack applications with React, TypeScript, Node.js, microservices, and close product/design/QA collaboration."
+      "Senior delivery across product discovery, frontend systems, backend services, and production reliability.",
+    highlights: [
+      "Collaborated with product, design, QA, and client stakeholders to take full-stack applications from discovery through production.",
+      "Built and optimized React, TypeScript, Node.js, and microservice-based product workflows.",
+      "Improved scalability and performance by finding bottlenecks across frontend/backend boundaries.",
+      "Triaged production incidents, debugged complex issues, and shipped reliability fixes with minimal downtime."
+    ]
   },
   {
     company: "First Factory",
     title: "Software Engineer",
     period: "Feb 2021 - Apr 2022",
     summary:
-      "Led team delivery, built CRM products from the ground up, and mentored engineers through architecture and code reviews."
+      "Team leadership, CRM product architecture, mobile accessibility, and backend business logic.",
+    highlights: [
+      "Led a high-performing engineering team through intricate requirements and architectural design decisions.",
+      "Built CRM products from the ground up using Node.js and NestJS.",
+      "Advanced accessibility features in React Native mobile applications.",
+      "Mentored junior developers through code reviews, pair programming, MVC/MVVM discussions, and maintainability guidance."
+    ]
   },
   {
     company: "Omni Costa Rica",
     title: "Full Stack Engineer",
     period: "Mar 2020 - Feb 2021",
     summary:
-      "Improved transportation and banking apps through performance work, security enhancements, and native mobile integrations."
+      "Performance, security, banking workflows, transportation apps, and native React Native integrations.",
+    highlights: [
+      "Resolved critical transportation-app bugs that improved app performance metrics by 30% and reduced user complaints by 20%.",
+      "Implemented enhanced security measures for a banking app and supported regulatory compliance needs.",
+      "Collaborated with backend developers to integrate native features into React Native applications.",
+      "Balanced mobile UX, backend coordination, and reliability requirements in production-facing apps."
+    ]
   },
   {
     company: "Bananacode",
     title: "Software Developer",
     period: "Mar 2019 - Mar 2020",
     summary:
-      "Created React Native architectures, integrated native Java and Objective-C code, and shipped mobile game features."
+      "Early mobile product architecture, native integrations, reusable React Native patterns, and game features.",
+    highlights: [
+      "Engineered sound features for mobile games to improve user experience and engagement.",
+      "Integrated Java and Objective-C native code into React Native for three major projects.",
+      "Created new mobile app architectures focused on maintainability, reuse, and scalable React Native patterns.",
+      "Established practical component patterns for new mobile app development."
+    ]
   }
 ];
 
 const skills = [
-  { label: "Frontend", value: "React, Next.js, TypeScript, CSS systems", icon: Code2 },
-  { label: "Backend", value: "Node.js, NestJS, Python, Django, FastAPI", icon: ServerCog },
-  { label: "Data", value: "PostgreSQL, Firebase, MySQL, MariaDB", icon: Database },
-  { label: "Mobile", value: "React Native, Java, Objective-C", icon: Smartphone },
-  { label: "Architecture", value: "Microservices, REST, GraphQL, MVC/MVVM", icon: Network },
-  { label: "Delivery", value: "Docker, GitHub Actions, CI/CD workflows", icon: Rocket }
+  { label: "Frontend", value: "React, Next.js, TypeScript, JavaScript, HTML5, CSS3, Bootstrap, TailwindCSS", icon: Code2 },
+  { label: "Backend", value: "Node.js, NestJS, REST APIs, GraphQL, Python, Django, FastAPI", icon: ServerCog },
+  { label: "Data", value: "PostgreSQL, Firebase, MariaDB, MySQL, schema-aware application workflows", icon: Database },
+  { label: "Mobile", value: "React Native, native Java and Objective-C bridges, accessibility, mobile architecture", icon: Smartphone },
+  { label: "Architecture", value: "Microservices, MVC/MVVM, service-oriented design, design patterns, performance tuning", icon: Network },
+  { label: "Delivery", value: "Agile delivery, Docker basics, AWS fundamentals, GitHub Actions, CI/CD workflows", icon: Rocket }
+];
+
+const profileSignals = [
+  "REST/GraphQL APIs",
+  "Performance optimization",
+  "Production support",
+  "AI-assisted workflows",
+  "Cross-functional delivery",
+  "Technical mentorship"
 ];
 
 function App() {
@@ -170,9 +204,14 @@ function App() {
             </h1>
             <p className="hero-title">Senior Full-Stack Engineer</p>
             <p className="hero-copy">
-              I build production web, mobile, and backend systems with React, React Native, TypeScript,
-              Node.js, NestJS, PostgreSQL, and microservice-based architecture.
+              I build scalable web, mobile, and backend applications with React, React Native, TypeScript,
+              Node.js, NestJS, PostgreSQL, REST/GraphQL APIs, and microservice-based architecture.
             </p>
+            <div className="hero-tags" aria-label="Core engineering strengths">
+              {profileSignals.map((signal) => (
+                <span key={signal}>{signal}</span>
+              ))}
+            </div>
             <div className="hero-actions">
               <a className="button primary" href="#work">
                 <BriefcaseBusiness size={18} aria-hidden="true" /> View Work
@@ -221,6 +260,10 @@ function App() {
           <strong>3</strong>
           <span>platform surfaces: web, mobile, backend</span>
         </div>
+        <div>
+          <strong>30%</strong>
+          <span>documented performance lift on transportation app work</span>
+        </div>
       </section>
 
       <section className="section intro reveal">
@@ -231,8 +274,26 @@ function App() {
         <p>
           My work sits where product quality, frontend craft, API design, mobile delivery, and
           production reliability overlap. I have supported regulated fintech, civic technology,
-          notification infrastructure, payments, CRMs, transportation, and consumer mobile products.
+          notification infrastructure, payments, CRMs, transportation, banking, and consumer mobile products.
         </p>
+      </section>
+
+      <section className="credential-strip reveal" aria-label="Professional profile">
+        <article>
+          <span>Education</span>
+          <strong>Tecnologico de Costa Rica</strong>
+          <p>Software Engineer, graduation date May 2020.</p>
+        </article>
+        <article>
+          <span>Base</span>
+          <strong>San Jose, Costa Rica</strong>
+          <p>Remote-ready senior engineer working across US product teams and client stakeholders.</p>
+        </article>
+        <article>
+          <span>Practice</span>
+          <strong>AI-assisted delivery</strong>
+          <p>Uses GitHub Copilot, Cursor, Claude Code, and ChatGPT to accelerate engineering workflows.</p>
+        </article>
       </section>
 
       <section className="section skills-section reveal" aria-labelledby="skills-title">
@@ -298,6 +359,11 @@ function App() {
                 <h3>{role.title}</h3>
                 <strong>{role.company}</strong>
                 <span>{role.summary}</span>
+                <ul className="role-highlights">
+                  {role.highlights.map((highlight) => (
+                    <li key={highlight}>{highlight}</li>
+                  ))}
+                </ul>
               </div>
             </article>
           ))}
