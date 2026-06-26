@@ -1,10 +1,11 @@
-import { StrictMode } from "react";
+import { StrictMode, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import {
   ArrowUpRight,
   BriefcaseBusiness,
   Code2,
   Database,
+  ExternalLink,
   Mail,
   MapPin,
   Network,
@@ -118,6 +119,31 @@ const skills = [
 ];
 
 function App() {
+  useEffect(() => {
+    const elements = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
+
+    if (!("IntersectionObserver" in window)) {
+      elements.forEach((element) => element.classList.add("is-visible"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -12% 0px", threshold: 0.16 }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main>
       <header className="site-header" aria-label="Primary navigation">
@@ -132,34 +158,57 @@ function App() {
       </header>
 
       <section className="hero" id="top">
-        <img
-          className="hero-image"
-          src="/images/engineering-workspace.png"
-          alt="Abstract full-stack engineering workspace with product dashboards and service architecture"
-        />
-        <div className="hero-overlay" />
-        <div className="hero-content">
-          <p className="eyebrow">
-            <MapPin size={16} aria-hidden="true" /> San Jose, Costa Rica
-          </p>
-          <h1>Alvaro Castro</h1>
-          <p className="hero-title">Senior Full-Stack Engineer</p>
-          <p className="hero-copy">
-            I build production web, mobile, and backend systems with React, React Native, TypeScript,
-            Node.js, NestJS, PostgreSQL, and microservice-based architecture.
-          </p>
-          <div className="hero-actions">
-            <a className="button primary" href="#work">
-              <BriefcaseBusiness size={18} aria-hidden="true" /> View Work
-            </a>
-            <a className="button secondary" href="mailto:alvarocastro74@gmail.com">
-              <Mail size={18} aria-hidden="true" /> Contact
-            </a>
+        <div className="hero-grid" aria-hidden="true" />
+        <div className="hero-inner">
+          <div className="hero-content reveal is-visible">
+            <p className="eyebrow">
+              <MapPin size={16} aria-hidden="true" /> San Jose, Costa Rica
+            </p>
+            <h1>
+              Alvaro
+              <span>Castro</span>
+            </h1>
+            <p className="hero-title">Senior Full-Stack Engineer</p>
+            <p className="hero-copy">
+              I build production web, mobile, and backend systems with React, React Native, TypeScript,
+              Node.js, NestJS, PostgreSQL, and microservice-based architecture.
+            </p>
+            <div className="hero-actions">
+              <a className="button primary" href="#work">
+                <BriefcaseBusiness size={18} aria-hidden="true" /> View Work
+              </a>
+              <a className="button secondary" href="mailto:alvarocastro74@gmail.com">
+                <Mail size={18} aria-hidden="true" /> Contact
+              </a>
+            </div>
+          </div>
+          <div className="hero-art reveal is-visible" aria-hidden="true">
+            <div className="image-shell">
+              <img
+                src="/images/engineering-workspace.png"
+                alt=""
+              />
+              <div className="scan-line" />
+            </div>
+            <div className="status-strip">
+              <span>React Native</span>
+              <span>TypeScript</span>
+              <span>Node/NestJS</span>
+              <span>PostgreSQL</span>
+            </div>
+            <div className="signal-card signal-a">
+              <strong>99.9</strong>
+              <span>reliability mindset</span>
+            </div>
+            <div className="signal-card signal-b">
+              <strong>7+</strong>
+              <span>years shipping</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="metrics" aria-label="Career highlights">
+      <section className="metrics reveal" aria-label="Career highlights">
         <div>
           <strong>7+</strong>
           <span>years shipping software</span>
@@ -174,7 +223,7 @@ function App() {
         </div>
       </section>
 
-      <section className="section intro">
+      <section className="section intro reveal">
         <div>
           <p className="section-kicker">Focus</p>
           <h2>Product engineering across the full stack.</h2>
@@ -186,7 +235,7 @@ function App() {
         </p>
       </section>
 
-      <section className="section skills-section" aria-labelledby="skills-title">
+      <section className="section skills-section reveal" aria-labelledby="skills-title">
         <div className="section-heading">
           <p className="section-kicker">Capabilities</p>
           <h2 id="skills-title">Modern stack, practical delivery.</h2>
@@ -205,7 +254,7 @@ function App() {
         </div>
       </section>
 
-      <section className="section" id="work" aria-labelledby="work-title">
+      <section className="section reveal" id="work" aria-labelledby="work-title">
         <div className="section-heading split">
           <div>
             <p className="section-kicker">Selected Work</p>
@@ -235,7 +284,7 @@ function App() {
         </div>
       </section>
 
-      <section className="section experience" id="experience" aria-labelledby="experience-title">
+      <section className="section experience reveal" id="experience" aria-labelledby="experience-title">
         <div className="section-heading">
           <p className="section-kicker">Experience</p>
           <h2 id="experience-title">A senior path through delivery, architecture, and mentorship.</h2>
@@ -255,7 +304,7 @@ function App() {
         </div>
       </section>
 
-      <section className="contact" id="contact" aria-labelledby="contact-title">
+      <section className="contact reveal" id="contact" aria-labelledby="contact-title">
         <div>
           <p className="section-kicker">Available For</p>
           <h2 id="contact-title">Senior full-stack roles, product teams, and complex delivery work.</h2>
@@ -270,6 +319,13 @@ function App() {
           </a>
           <a href="tel:+50686424112">
             <Phone size={18} aria-hidden="true" /> +506 8642 4112
+          </a>
+          <a
+            href="https://www.linkedin.com/in/alvaro-castro-venegas-b07b25162"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <ExternalLink size={18} aria-hidden="true" /> LinkedIn
           </a>
           <span>
             <ShieldCheck size={18} aria-hidden="true" /> Costa Rica timezone, remote-ready
